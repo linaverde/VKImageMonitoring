@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Проводится сканирование{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = async function () {
+            let j = {
+                s:{{ s }},
+                p: {{ p }},
+                c: {{ c }},
+                r: {{ r }},
+            }
+            fetch('/processing/' +{{ id }} +'/' + JSON.stringify(j)).then(function (response) {
+                    if (response.ok) {
+                        document.getElementById('message').innerText = "Сканирование завершено!"
+                    } else {
+                        alert("Ошибка HTTP: " + response.status);
+                    }
+                }
+            );
+        };
+
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <div style="text-align: center;"><h2 id="message">Выполняется сканирование!<br>
+            Вы можете остаться здесь и дождаться результата.</h2>
+        <br>
+        <form action="{{ path( 'monitoring_record_index' ) }}">
+            <input type="submit" value="Вернуться"/>
+        </form>
+    </div>
+
+
+{% endblock %}

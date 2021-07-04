@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Настройки{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+
+        <h1>Настройки</h1>
+
+        <hr>
+
+        <h3>Общие</h3>
+
+        <div class="mb-3">
+            <form action="{{ path('change_name') }}" method="post">
+                <label for="name">Ваше имя</label>
+                <input id="name" name="name" value="{{ app.user.optionalname }}">
+                <input type="submit" value="Сохранить"/>
+            </form>
+        </div>
+
+        <hr>
+
+        <h3>Отслеживаемые группы</h3>
+
+        <table class="table">
+
+            {% if app.user.groups %}
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Ссылка</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                {% for group_info in app.user.groups %}
+
+                    <tbody>
+                    <tr>
+                        <td>{% if group_info.Name %}{{ group_info.Name }}{% else %}-{% endif %}</td>
+                        <td>{{ group_info.Link }}</td>
+                        <td>
+                            <form action="{{ path('group_info_show', {'id': group_info.id}) }}">
+                                <input type="submit" value="Подробнее"/>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                {% endfor %}
+
+            {% else %}
+                <tr>
+                    <td colspan="9">У вас нет сохраненных групп Вконтакте</td>
+                </tr>
+            {% endif %}
+
+        </table>
+
+
+        <div class="mb-3">
+            <form action="{{ path('group_info_new') }}">
+                <input type="submit" value="Добавить группу"/>
+            </form>
+        </div>
+
+        <hr>
+
+        <h3>Параметры отслеживания</h3>
+
+
+        <div class="mb-3">
+            <h5>Эти настройки будут использованы по-умолчанию, если для конкретной группы не указаны иные</h5>
+            <div class="mb-3">
+                <b>Количество дней</b>
+                - {% if app.user.MonitoringSettings.DaysCount %} {{ app.user.MonitoringSettings.DaysCount }} {% else %} не указано (максимум) {% endif %}
+            </div>
+            <div class="mb-3">
+                <b>Количество постов</b>
+                - {% if app.user.MonitoringSettings.PostsCount %} {{ app.user.MonitoringSettings.PostsCount }} {% else %} не указано (максимум) {% endif %}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <form action="{{ path('user_monitoring_settings_edit', {'id': app.user.MonitoringSettings.id}) }}">
+                <input type="submit" value="Редактировать"/>
+            </form>
+        </div>
+
+        <hr>
+
+        <div class="mb-3">
+            <form action="{{ path('user_profile') }}">
+                <input type="submit" value="Назад"/>
+            </form>
+        </div>
+
+
+
+    {% endif %}
+
+{% endblock %}

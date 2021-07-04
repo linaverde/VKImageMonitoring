@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Имидж{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+
+        {% if app.user.optional_name %}
+            <div class="mb-3">
+                <h2>Здравствуйте, {{ app.user.optionalname }}!</h2>
+            </div>
+        {% else %}
+            <div class="mb-3">
+                <h2>Здравствуйте, {{ app.user.username }}!</h2>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {% if not app.user %}
+
+        <div class="mb-3">
+            <form action="{{ path('app_register') }}">
+                <input type="submit" value="Зарегистрироваться"/>
+            </form>
+        </div>
+
+        <div class="mb-3">
+            <form action="{{ path('app_login') }}">
+                <input type="submit" value="Войти"/>
+            </form>
+        </div>
+
+    {% endif %}
+
+{% endblock %}

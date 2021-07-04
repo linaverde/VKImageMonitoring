@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактировать группу{% endblock %}
+
+{% block body %}
+    <h1>Редактировать параметры отслеживания группы </h1>
+
+    {{ include('group_monitoring_settings/_form.html.twig', {'button_label': 'Сохранить'}) }}
+
+    <form action="{{ path('group_info_show', {'id': group_monitoring_setting.GroupInfo.id}) }}">
+        <input type="submit" value="Назад"/>
+    </form>
+
+{% endblock %}

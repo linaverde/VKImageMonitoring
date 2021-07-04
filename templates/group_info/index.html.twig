@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GroupInfo index{% endblock %}
+
+{% block body %}
+    <h1>GroupInfo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Link</th>
+                <th>Country</th>
+                <th>Area</th>
+                <th>City</th>
+                <th>Gender</th>
+                <th>MinAge</th>
+                <th>MaxAge</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for group_info in group_infos %}
+            <tr>
+                <td>{{ group_info.id }}</td>
+                <td>{{ group_info.Name }}</td>
+                <td>{{ group_info.Link }}</td>
+                <td>{{ group_info.Country }}</td>
+                <td>{{ group_info.Area }}</td>
+                <td>{{ group_info.City }}</td>
+                <td>{{ group_info.Gender }}</td>
+                <td>{{ group_info.MinAge }}</td>
+                <td>{{ group_info.MaxAge }}</td>
+
+                <td>
+                    <a href="{{ path('group_info_show', {'id': group_info.id}) }}">show</a>
+                    <a href="{{ path('group_info_edit', {'id': group_info.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('group_info_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Настройки{% endblock %}
+
+{% block body %}
+    <h1>Настройки сканирования по-умолчанию</h1>
+
+    {{ include('user_monitoring_settings/_form.html.twig', {'button_label': 'Сохранить'}) }}
+
+    <div class="mb-3">
+        <form action="{{ path('user_settings') }}">
+            <input type="submit" value="Назад"/>
+        </form>
+    </div>
+
+{% endblock %}

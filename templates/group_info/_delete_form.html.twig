@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('group_info_delete', {'id': group_info.id}) }}"
+      onsubmit="return confirm('Вы уверены, что хотите удалить группу? Все собранные данные будут потеряны!');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ group_info.id) }}">
+    <input type="submit" value="Удалить"/>
+</form>

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log{% endblock %}
+
+{% block body %}
+    <h1>Log</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ log.id }}</td>
+            </tr>
+            <tr>
+                <th>Ip</th>
+                <td>{{ log.ip }}</td>
+            </tr>
+            <tr>
+                <th>Uri</th>
+                <td>{{ log.uri }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ log.user }}</td>
+            </tr>
+            <tr>
+                <th>Method</th>
+                <td>{{ log.method }}</td>
+            </tr>
+            <tr>
+                <th>Request_time</th>
+                <td>{{ log.requestTime ? log.requestTime|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Zone</th>
+                <td>{{ log.zone }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ log.code }}</td>
+            </tr>
+            <tr>
+                <th>Referral</th>
+                <td>{{ log.referral }}</td>
+            </tr>
+            <tr>
+                <th>Agent</th>
+                <td>{{ log.agent }}</td>
+            </tr>
+            <tr>
+                <th>Bytes</th>
+                <td>{{ log.bytes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('log_index') }}">Вернуться</a>
+
+    <a href="{{ path('log_edit', {'id': log.id}) }}">Редактировать</a>
+
+    {{ include('log/_delete_form.html.twig') }}
+{% endblock %}

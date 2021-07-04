@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GroupMonitoringSettings{% endblock %}
+
+{% block body %}
+    <h1>Create new GroupMonitoringSettings</h1>
+
+    {{ include('group_monitoring_settings/_form.html.twig') }}
+
+    <a href="{{ path('group_monitoring_settings_index') }}">back to list</a>
+{% endblock %}

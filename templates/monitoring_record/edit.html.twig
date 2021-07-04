@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit MonitoringRecord{% endblock %}
+
+{% block body %}
+    <h1>Edit MonitoringRecord</h1>
+
+    {{ include('monitoring_record/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('monitoring_record_index') }}">back to list</a>
+
+    {{ include('monitoring_record/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+        #simpleform {
+            width: 600px;
+            border: 2px solid grey;
+            padding: 14px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}Загрузка логов{% endblock %}
+
+{% block body %}
+    <div style="text-align: center;" id="simpleform">
+        <h2><span style="color: green; ">Файл был успешно загружен!</span></h2>
+        <br>
+        <br>
+        <a href="{{ path('log_index') }}">Вернуться</a>
+    </div>
+
+{% endblock %}

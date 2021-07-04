@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактировать группу{% endblock %}
+
+{% block body %}
+    <h1>Редактирование информации о группе</h1>
+
+    {{ include('group_info/_form.html.twig', {'button_label': 'Сохранить'}) }}
+
+    <form action="{{ path('group_info_show', {'id': group_info.id}) }}">
+        <input type="submit" value="Назад"/>
+    </form>
+
+{% endblock %}

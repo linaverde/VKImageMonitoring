@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Логи сайта{% endblock %}
+
+{% block body %}
+    <h1>Список загруженных логов</h1>
+
+    <table class="table">
+        <a href="{{ path('upload') }}">Загрузить файл</a>
+        <tr></tr>
+        <tr>
+            <th>Ip</th>
+            <th>Uri</th>
+            <th>User</th>
+            <th>Method</th>
+            <th>Time</th>
+            <th>Zone</th>
+            <th>Code</th>
+            <th>Referral</th>
+            <th>Agent</th>
+            <th>Bytes</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for log in logs %}
+
+            <tr>
+                <td>{{ log.ip }}</td>
+                <td>{{ log.uri }}</td>
+                <td>{{ log.user }}</td>
+                <td>{{ log.method }}</td>
+                <td>{{ log.requestTime ? log.requestTime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ log.zone }}</td>
+                <td>{{ log.code }}</td>
+                <td>{{ log.referral }}</td>
+                <td>{{ log.agent }}</td>
+                <td>{{ log.bytes }}</td>
+                <td>
+                    <a href="{{ path('log_show', {'id': log.id}) }}">Открыть</a>
+                    <a href="{{ path('log_edit', {'id': log.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+
+            <tr>
+                <td colspan="12">Список логов пуст.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

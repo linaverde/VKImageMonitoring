@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Имидж{% endblock %}
+
+{% block body %}
+
+    {% if msg %}
+            <div class="mb-3" style="text-align: center;">
+                <h3> {{ msg }} </h3>
+            </div>
+
+        {% else %}
+
+            <div class="mb-3" style="text-align: center;">
+                <h3>Что-то пошло не так</h3>
+            </div>
+
+    {% endif %}
+
+        <div class="mb-3" style="text-align: center;">
+            <form action="{{ path( redirect ) }}">
+                <input type="submit" value="Вернуться"/>
+            </form>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Добавить{% endblock %}
+
+{% block body %}
+    <h1>Добавьте новую группу ВКонтакте для мониторинга</h1>
+
+    {{ include('group_info/_form.html.twig') }}
+
+    <div class="mb-3">
+        <form action="{{ path('user_settings') }}">
+            <input type="submit" value="Назад"/>
+        </form>
+    </div>
+
+{% endblock %}

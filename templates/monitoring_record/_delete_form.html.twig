@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('monitoring_record_delete', {'id': monitoring_record.id}) }}"
+      onsubmit="return confirm('Вы уверены, что хотите удалить данные?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ monitoring_record.id) }}">
+    <input type="submit" value="{{ label }}"/>
+</form>

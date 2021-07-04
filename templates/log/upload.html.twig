@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+        #simpleform {
+            width:600px;
+            border:2px solid grey;
+            padding:14px;
+        }
+        #simpleform label {
+            font-size:12px;
+            float:left;
+            width:300px;
+            text-align:right;
+            display:block;
+        }
+        #simpleform span {
+            font-size:11px;
+            color:grey;
+            width:100px;
+            text-align:right;
+            display:block;
+        }
+        #simpleform input {
+            border:1px solid grey;
+            font-family:verdana;
+            font-size:14px;
+            color:grey;
+            height:24px;
+            width:250px;
+            margin: 0 0 20px 10px;
+        }
+        #simpleform button {
+            clear:both;
+            margin-left:250px;
+            background:grey;
+            color:#FFFFFF;
+            border:solid 1px #666666;
+            font-size:16px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}Загрузка логов{% endblock %}
+
+{% block body %}
+    <h3>Загрузка логов</h3>
+    <div id="simpleform">
+        <!-- Тип кодирования данных, enctype, ДОЛЖЕН БЫТЬ указан ИМЕННО так -->
+        <form enctype="multipart/form-data" action="/log/upload_script" method="POST">
+            <!-- Поле MAX_FILE_SIZE должно быть указано до поля загрузки файла -->
+            <!-- Название элемента input определяет имя в массиве $_FILES -->
+            Отправить этот файл: <input name="userfile" type="file" />
+            <input type="submit" value="Отправить файл" />
+        </form>
+    </div>
+{% endblock %}

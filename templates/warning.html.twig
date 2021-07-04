@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Имидж{% endblock %}
+
+{% block body %}
+
+    <div class="mb-3" style="text-align: center;">
+        <h3> {{ msg }} </h3>
+    </div>
+
+
+    <div class="mb-3" style="text-align: center;">
+        <form action="{{ path( redirect1, {'id' : id} ) }}">
+            <input type="submit" value="{{ btn1 }}"/>
+        </form>
+        <form action="{{ path( redirect2 ) }}">
+            <input type="submit" value="{{ btn2 }}"/>
+        </form>
+    </div>
+
+{% endblock %}

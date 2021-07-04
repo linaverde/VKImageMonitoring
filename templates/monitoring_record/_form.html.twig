@@ -1,0 +1,35 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+<script>
+    function check() {
+        if (document.getElementById('Posts').checked)
+        {
+            document.getElementById('Comments').disabled = false;
+            document.getElementById('Reposts').disabled = false;
+
+        } else {
+            document.getElementById('Comments').checked = false;
+            document.getElementById('Reposts').checked = false;
+            document.getElementById('Comments').disabled = true;
+            document.getElementById('Reposts').disabled = true;
+        }
+
+    }
+</script>
+
+<div class="mb-3">
+    <h5>Какие данные вы хотите собирать?</h5>
+        <input type="checkbox" name="Subscribers" checked >
+        <label for="Subscribers">Подписчики</label>
+        <input type="checkbox" name="Posts" id="Posts" checked onchange="check()">
+        <label for="Posts">Посты</label>
+        <input type="checkbox" name="Comments" id="Comments" checked>
+        <label for="Comments">Комментарии</label>
+        <input type="checkbox" name="Reposts" id="Reposts">
+        <label for="Reposts">Репосты</label>
+</div>
+
+<input type="submit" value="Начать сканирование"/>
+
+{{ form_end(form) }}
