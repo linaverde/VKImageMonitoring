@@ -4,6 +4,18 @@
 
 {% block body %}
     <h1>Мониторинг групп ВКонтакте</h1>
+    <br>
+    <div class="mb-3">
+        <form action="{{ path('user_profile') }}">
+            <input type="submit" value="Назад"/>
+        </form>
+    </div>
+    <br>
+    <div class="mb-3">
+        <form action="{{ path( 'monitoring_record_new' ) }}">
+            <input type="submit" value="Начать сканирование"/>
+        </form>
+    </div>
 
     <table class="table">
         <thead>
@@ -35,7 +47,7 @@
 
                     <td>
                         <div class="mb-3">
-                            <form action="{{ path( 'monitoring_record_index' ) }}">
+                            <form action="{{ path( 'monitoring_record_details', {'id': monitoring_record.Id} ) }}">
                                 <input type="submit" value="Подробнее"/>
                             </form>
                         </div>
@@ -61,9 +73,5 @@
         </tbody>
     </table>
 
-    <div class="mb-3">
-        <form action="{{ path( 'monitoring_record_new' ) }}">
-            <input type="submit" value="Начать сканирование"/>
-        </form>
-    </div>
+
 {% endblock %}

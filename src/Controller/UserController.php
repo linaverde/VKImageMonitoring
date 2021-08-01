@@ -83,7 +83,7 @@ class UserController extends AbstractController
     public function change_name(Request $request, UserRepository $repository): Response
     {
         $user = $this->security->getUser();
-        $user->setOptionalName($request->request->get('Link'));
+        $user->setOptionalName($request->request->get('name'));
         $this->getDoctrine()->getManager()->flush();
 
         return $this->redirectToRoute('user_settings');

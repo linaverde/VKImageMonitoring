@@ -49,7 +49,7 @@
                 <td><span style="color: red; "> Не выполнена </span>
                     <div class="mb-3">
                         <form action="{{ path('group_gain_access', {'id': group_info.id}) }}">
-                            <input type="submit" value="Авторизоваться ВКонтакте"/>
+                            <input type="submit" value="Аутентифицироваться ВКонтакте"/>
                         </form>
                     </div>
                 </td>
@@ -73,11 +73,11 @@
     <div class="mb-3">
         <div class="mb-3">
             <b>Количество дней</b>
-            - {% if group_info.MonitoringSettings.DaysCount %} {{ group_info.MonitoringSettings.DaysCount }} {% else %} не указано (максимум) {% endif %}
+            - {% if group_info.MonitoringSettings.DaysCount %} {{ group_info.MonitoringSettings.DaysCount }} {% else %} не указано{% endif %}
         </div>
         <div class="mb-3">
             <b>Количество постов</b>
-            - {% if group_info.MonitoringSettings.PostsCount %} {{ group_info.MonitoringSettings.PostsCount }} {% else %} не указано (максимум) {% endif %}
+            - {% if group_info.MonitoringSettings.PostsCount %} {{ group_info.MonitoringSettings.PostsCount }} {% else %} не указано {% endif %}
         </div>
     </div>
 

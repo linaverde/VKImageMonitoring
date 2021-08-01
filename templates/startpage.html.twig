@@ -18,14 +18,15 @@
     {% endif %}
 
     {% if not app.user %}
-
-        <div class="mb-3">
+        <br>
+        <br>
+        <div class="mb-3" style="text-align: center;">
             <form action="{{ path('app_register') }}">
                 <input type="submit" value="Зарегистрироваться"/>
             </form>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3" style="text-align: center;">
             <form action="{{ path('app_login') }}">
                 <input type="submit" value="Войти"/>
             </form>

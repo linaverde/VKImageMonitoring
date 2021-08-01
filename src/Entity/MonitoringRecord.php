@@ -56,6 +56,16 @@ class MonitoringRecord
      */
     private $User;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $HasComments;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $HasReposts;
+
     public function __construct()
     {
         $this->Record = new ArrayCollection();
@@ -183,6 +193,30 @@ class MonitoringRecord
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getHasComments(): ?bool
+    {
+        return $this->HasComments;
+    }
+
+    public function setHasComments(bool $HasComments): self
+    {
+        $this->HasComments = $HasComments;
+
+        return $this;
+    }
+
+    public function getHasReposts(): ?bool
+    {
+        return $this->HasReposts;
+    }
+
+    public function setHasReposts(bool $HasReposts): self
+    {
+        $this->HasReposts = $HasReposts;
 
         return $this;
     }

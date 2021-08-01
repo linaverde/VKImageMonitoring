@@ -54,6 +54,41 @@ class SubsctiberInfo
      */
     private $ExpectedCityCount;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Country;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $City;
+
+    /**
+     * @ORM\Column(type="string", length=1, nullable=true)
+     */
+    private $Gender;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $MinAge;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $MaxAge;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $SmallerAgeCount;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $BiggerAgeCount;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +175,91 @@ class SubsctiberInfo
     public function setExpectedCityCount(int $ExpectedCityCount): self
     {
         $this->ExpectedCityCount = $ExpectedCityCount;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->Country;
+    }
+
+    public function setCountry(?string $Country): self
+    {
+        $this->Country = $Country;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->City;
+    }
+
+    public function setCity(?string $City): self
+    {
+        $this->City = $City;
+
+        return $this;
+    }
+
+
+    public function getGender(): ?string
+    {
+        return $this->Gender;
+    }
+
+    public function setGender(?string $Gender): self
+    {
+        $this->Gender = $Gender;
+
+        return $this;
+    }
+
+    public function getMinAge(): ?int
+    {
+        return $this->MinAge;
+    }
+
+    public function setMinAge(?int $MinAge): self
+    {
+        $this->MinAge = $MinAge;
+
+        return $this;
+    }
+
+    public function getMaxAge(): ?int
+    {
+        return $this->MaxAge;
+    }
+
+    public function setMaxAge(?int $MaxAge): self
+    {
+        $this->MaxAge = $MaxAge;
+
+        return $this;
+    }
+
+    public function getSmallerAgeCount(): ?int
+    {
+        return $this->SmallerAgeCount;
+    }
+
+    public function setSmallerAgeCount(?int $SmallerAgeCount): self
+    {
+        $this->SmallerAgeCount = $SmallerAgeCount;
+
+        return $this;
+    }
+
+    public function getBiggerAgeCount(): ?int
+    {
+        return $this->BiggerAgeCount;
+    }
+
+    public function setBiggerAgeCount(?int $BiggerAgeCount): self
+    {
+        $this->BiggerAgeCount = $BiggerAgeCount;
 
         return $this;
     }

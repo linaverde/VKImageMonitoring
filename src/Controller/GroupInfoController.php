@@ -71,6 +71,9 @@ class GroupInfoController extends AbstractController
                         ]);
                     if (!$savedGroups) {
                         $entityManager->persist($groupInfo);
+                        $currGroupSettings = new GroupMonitoringSettings();
+                        $currGroupSettings->setGroupInfo($groupInfo);
+                        $entityManager->persist($currGroupSettings);
                         $entityManager->flush();
                         return $this->redirectToRoute('user_settings');
                     } else {
@@ -111,17 +114,6 @@ class GroupInfoController extends AbstractController
      */
     public function show(GroupInfo $groupInfo, GroupMonitoringSettingsRepository $groupMonitoringSettingsRepository): Response
     {
-
-        $settings = $groupMonitoringSettingsRepository->findBy([
-            'GroupInfo' => $groupInfo,
-        ]);
-        if (!$settings) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $currGroupSettings = new GroupMonitoringSettings();
-            $currGroupSettings->setGroupInfo($groupInfo);
-            $entityManager->persist($currGroupSettings);
-            $entityManager->flush();
-        }
 
         return $this->render('group_info/show.html.twig', [
             'group_info' => $groupInfo,
@@ -236,6 +228,6 @@ class GroupInfoController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('group_info_index');
+        return $this->redirectToRoute('user_settings');
     }
 }
